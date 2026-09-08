@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 
 import { connectDatabase } from './config/database.js';
 import { apiRouter } from './routes/api.js';
@@ -11,6 +12,7 @@ const baseUrl = codespaceName
   : 'http://localhost:8000';
 
 app.use(express.json());
+app.use(cors());
 app.use('/api', apiRouter);
 
 app.get('/api/health', (_request, response) => {
